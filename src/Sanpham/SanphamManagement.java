@@ -1,4 +1,4 @@
-package Miniproject;
+package Sanpham;
 
 import java.util.Scanner;
 

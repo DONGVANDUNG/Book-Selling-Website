@@ -1,6 +1,6 @@
-package Miniproject;
+package Sanpham;
 
-import java.util.Scanner;
+import Sanpham.Sanpham;
 
 public class Test {
     public static void main(String[] args) {
