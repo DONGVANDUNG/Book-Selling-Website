@@ -6,6 +6,7 @@ public class Application {
     public static void main(String[] args) {
         StudentMangement studentMangement = new StudentMangement();
         Scanner sc = new Scanner(System.in);
+        while (true) {
         System.out.println("Nhap vao lua chon ma ban chon ma ban muon!!");
         System.out.println("1:Them sinh vien moi");
         System.out.println("2:Tim kiem sinh vien theo ten");
@@ -15,14 +16,11 @@ public class Application {
         System.out.println("6:Tim kiem sinh vien theo lop MH");
         System.out.print("Nhap vao lua chon cua ban:  ");
         int choice = sc.nextInt();
-        while (true) {
             if (choice == 1) {
                 Student student = new Student();
-                if (studentMangement.verifyAge(student.getAge())){
-                    studentMangement.verifygioitinh(student.getGioitinh());
+                if (studentMangement.verifyAge(student.getAge())&& studentMangement.verifygioitinh(student.getGioitinh())){
+                    studentMangement.saveinfo(student);
                 }
-                studentMangement.saveinfo(student);
-                studentMangement.AddStudent(student);
             }
             if (choice == 2) {
                 System.out.print("Nhap vao ten sinh vien ban muon tra cuu: ");

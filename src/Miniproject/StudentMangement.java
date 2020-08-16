@@ -11,13 +11,17 @@ public class StudentMangement implements StudentInteface {
         Student student;
         String line="";
         try {
-            String file=new File("data/student.txt").getAbsolutePath();
+            String file=new File("Data/student.txt").getAbsolutePath();
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String []s=line.split("/");
-            student=new Student((String)s[1],Integer.parseInt(s[2]),s[3],s[4],s[5],s[6]);
-            students.add(student);
-            } catch (FileNotFoundException e) {
+            line = bufferedReader.readLine();
+            while(line != null){
+                String []s=line.split("/");
+                student=new Student(s[0],Integer.parseInt(s[1]),s[2],s[3],s[4],s[5]);
+                students.add(student);
+                line = bufferedReader.readLine();
+            }
+            } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Doc file bi loi!!");
         }
@@ -26,12 +30,11 @@ public class StudentMangement implements StudentInteface {
 
     @Override
     public void writeAllStudenttoDB(List<Student> students) {
-        String file = new File("data/student.txt").getAbsolutePath();
-        try {
-            FileWriter fileWriter = new FileWriter(file, true);
-            PrintWriter printWriter=new PrintWriter(fileWriter);
+        String file = new File("Data/student.txt").getAbsolutePath();
+        try(FileWriter fileWriter = new FileWriter(file, false);
+        PrintWriter printWriter=new PrintWriter(fileWriter)){
             for (Student s:students){
-                printWriter.append(s.getName()+"/"+s.getAge()+"/"+s.getMssv()+"/"+
+                printWriter.println(s.getName()+"/"+s.getAge()+"/"+s.getMssv()+"/"+
                         s.getLopMh()+"/"+s.getGioitinh()+"/"+s.getQuequan());
             }
         }catch (Exception e){
@@ -47,8 +50,8 @@ public class StudentMangement implements StudentInteface {
     }
 
     @Override
-    public boolean verifygioitinh(String gender) {
-        if (gender.equalsIgnoreCase("Nam") && gender.equalsIgnoreCase("Nu")) {
+    public boolean verifygioitinh(String gioitinh) {
+        if (gioitinh.equalsIgnoreCase("Nam") ||gioitinh.equalsIgnoreCase("Nu")) {
             return true;
         }
         return false;
@@ -138,17 +141,9 @@ public class StudentMangement implements StudentInteface {
         }
         writeAllStudenttoDB(students2);
     }
-    @Override
-    public void AddStudent(Student student) {
-        List<Student> students =readAllStudentFormDB();
+    public void saveinfo(Student student){
+        List<Student>students=readAllStudentFormDB();
         students.add(student);
         writeAllStudenttoDB(students);
-    }
-    public void saveinfo(Student student){
-        List<Student>student1=new ArrayList<>();
-        student1.add(student);
-        writeAllStudenttoDB(student1);
-        List<Student>students=readAllStudentFormDB();
-        students.add((Student) student1);
     }
 }

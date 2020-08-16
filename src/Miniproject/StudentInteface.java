@@ -25,6 +25,4 @@ public interface StudentInteface {
 
     void RemoveStudentInforinDB(Student students);
 
-    void AddStudent(Student student);
-
 }
