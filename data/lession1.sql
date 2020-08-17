@@ -23,6 +23,7 @@ created_timestamp timestamp default current_timestamp,
 last_updated_timestamp timestamp
 );
 CREATE TABLE table_student_class(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 student_id varchar(10),
 class_id varchar(10) 
 )
