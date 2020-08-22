@@ -3,14 +3,13 @@ package Quanlidat;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Giaodichnha extends Giaodichdat {
+public class Giaodichnha {
     private String magiaodich;
     private String ngaygiaodich;
     private long dongia;
     private String loainha;
     private String diachi;
     private float dientich;
-    private Giaodichnha[] giaodichnha;
 
     public Giaodichnha(String magiaodich, String ngaygiaodich, long dongia, String loainha, String diachi, float dientich) {
         this.magiaodich = magiaodich;
@@ -20,31 +19,6 @@ public class Giaodichnha extends Giaodichdat {
         this.diachi = diachi;
         this.dientich = dientich;
     }
-
-public void Input() {
-    Scanner sc = new Scanner(System.in);
-    System.out.print("-Ban muon nhap vao may hoa don giao dich nha: ");
-    int select = sc.nextInt();
-    giaodichnha = new Giaodichnha[select];
-    for (int i = 0; i < select; i++) {
-        System.out.println(" -Nhap thong tin cho hoa don thu " + (i + 1) + ": ");
-        System.out.print("\t+Ma giao dich: ");
-        String ma = sc.nextLine();
-        sc.nextLine();
-        System.out.print("\t+Ngay giao dich: ");
-        String ngay = sc.nextLine();
-        System.out.print("\t+Don gia: ");
-        long dongia = sc.nextLong();
-        System.out.print("\t+Loai dat(A/B/C): ");
-        String loaidat = sc.nextLine();
-        sc.nextLine();
-        System.out.print("\t+Dia chi: ");
-        String diachi = sc.nextLine();
-        System.out.print("\t+Dien tich: ");
-        float dientich = sc.nextFloat();
-        giaodichnha[i]=new Giaodichnha(ma,ngay,dongia,loainha,diachi,dientich);
-    }
-}
 
     public Giaodichnha() {
     }
@@ -97,7 +71,7 @@ public void Input() {
         this.dientich = dientich;
     }
 
-    public double Giaodichnah() {
+    public double Giaodichnha() {
         double thanhtien = 0;
         if (loainha.equals("Cao Cap")) {
             thanhtien = dongia * dientich;
@@ -107,38 +81,27 @@ public void Input() {
         return thanhtien;
     }
 
-    public void showInform() {
+    public void print(int i) {
         System.out.println("-Giao dich nha: ");
-        for (int i = 0; i < giaodichnha.length - 1; i++) {
-            System.out.println("\t-Hoa don giao dich thu " + (i + 1) + ": ");
-            System.out.println("\t\t+Ma giao dich: " + magiaodich);
-            System.out.println("\t\t+Ngay giao dich: " + ngaygiaodich);
-            System.out.println("\t\t+Don gia: " + dongia);
-            System.out.println("\t\t+Loai dat: " + loainha);
-            System.out.println("\t\t+Dia chi: " + diachi);
-            System.out.println("\t\t+Dien tich: " + dientich);
-            System.out.println("---------------------------------------------");
-        }
-    }
-
-    public void Xuatgiaodich(String ngaythang) {
-        for (int i = 0; i < giaodichnha.length - 1; i++) {
-            if (giaodichnha[i].getNgaygiaodich().equals(ngaythang)) {
-                giaodichnha[i].showInfo();
-            }
-        }
+        System.out.println("\t-Hoa don giao dich thu " + (i + 1) + ": ");
+        System.out.println("\t\t+Ma giao dich: " + magiaodich);
+        System.out.println("\t\t+Ngay giao dich: " + ngaygiaodich);
+        System.out.println("\t\t+Don gia: " + dongia);
+        System.out.println("\t\t+Loai dat: " + loainha);
+        System.out.println("\t\t+Dia chi: " + diachi);
+        System.out.println("\t\t+Dien tich: " + dientich);
+        System.out.println("---------------------------------------------");
     }
 
     @Override
     public String toString() {
-        return "Giaodichnha{" +
+        return "\t\t+Giaodichnha{" +
                 "magiaodich='" + magiaodich + '\'' +
                 ", ngaygiaodich='" + ngaygiaodich + '\'' +
                 ", dongia=" + dongia +
                 ", loainha='" + loainha + '\'' +
                 ", diachi='" + diachi + '\'' +
                 ", dientich=" + dientich +
-                ", giaodichnha=" + Arrays.toString(giaodichnha) +
                 '}';
     }
 }

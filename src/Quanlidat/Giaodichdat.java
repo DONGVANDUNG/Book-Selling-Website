@@ -9,7 +9,6 @@ public class Giaodichdat {
     private float dongia;
     private String loaidat;
     private float dientich;
-    private Giaodichdat[] giaodichdats;
 
     public Giaodichdat(String magiaodich, String ngaygiaodich, float dongia, String loaidat, float dientich) {
         this.magiaodich = magiaodich;
@@ -19,28 +18,6 @@ public class Giaodichdat {
         this.dientich = dientich;
     }
 
-    public void Input() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("-Ban muon nhap vao may giao dich dat: ");
-        int seclect = sc.nextInt();
-        giaodichdats = new Giaodichdat[seclect];
-        for (int i = 0; i < seclect; i++) {
-            System.out.println(" -Moi ban nhap thong tin cho hoa don thu " + (i + 1) + ": ");
-            System.out.print("\t+Ma giao dich: ");
-            sc.nextLine();
-            String ma = sc.nextLine();
-            System.out.print("\t+Ngay giao dich: ");
-            String ngay = sc.nextLine();
-            System.out.print("\t+Don gia: ");
-            long dongia = sc.nextLong();
-            System.out.print("\t+Loai dat(A/B/C): ");
-            sc.nextLine();
-            String loaidat = sc.nextLine();
-            System.out.print("\t+Dien tich: ");
-            float dientich = sc.nextFloat();
-            giaodichdats[i]=new Giaodichdat(ma,ngay,dongia,loaidat,dientich);
-        }
-    }
     public Giaodichdat() {
     }
 
@@ -93,35 +70,15 @@ public class Giaodichdat {
         }
         return thanhtien;
     }
-
-    public void showInfo() {
-        System.out.println("-Giao dich dat:");
-        for (int i = 0; i < giaodichdats.length-1; i++) {
-            System.out.println("\t-Hoa don giao dich thu " + (i + 1) + ": ");
-            System.out.println("\t\t+Ma giao dich: " + magiaodich);
-            System.out.println("\t\t+Ngay giao dich: " + ngaygiaodich);
-            System.out.println("\t\t+Don gia: " + dongia);
-            System.out.println("\t\t+Loai dat: " + loaidat);
-            System.out.println("\t\t+Dien tich: " + dientich);
-            System.out.println("-------------------------------------------");
-        }
-    }
-
-    public float TB() {
-        float tong = 0;
-        for (int i = 0; i < giaodichdats.length - 1; i++) {
-            tong += giaodichdats[i].Giaodichdat();
-        }
-        float TB = tong / (giaodichdats.length);
-        return TB;
-    }
-
-    public void Xuatgiaodich(String ngaythang) {
-        for (int i = 0; i < giaodichdats.length - 1; i++) {
-            if (giaodichdats[i].getNgaygiaodich().equals(ngaythang)) {
-                giaodichdats[i].showInfo();
-            }
-        }
+    public void print(int i) {
+        System.out.println("-Giao dich nha: ");
+        System.out.println("\t-Hoa don giao dich thu " + (i + 1) + ": ");
+        System.out.println("\t\t+Ma giao dich: " + magiaodich);
+        System.out.println("\t\t+Ngay giao dich: " + ngaygiaodich);
+        System.out.println("\t\t+Don gia: " + dongia);
+        System.out.println("\t\t+Loai dat: " + loaidat);
+        System.out.println("\t\t+Dien tich: " + dientich);
+        System.out.println("---------------------------------------------");
     }
 
     @Override
@@ -132,7 +89,6 @@ public class Giaodichdat {
                 ", dongia=" + dongia +
                 ", loaidat='" + loaidat + '\'' +
                 ", dientich=" + dientich +
-                ", giaodichdats=" + Arrays.toString(giaodichdats) +
                 '}';
     }
 }

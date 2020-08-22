@@ -8,51 +8,31 @@ import java.util.Scanner;
 public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Quanlinhadat quanlinhadat = new Quanlinhadat();
         while (true) {
-            System.out.println("-Ban co cac lua chon sau: ");
-            System.out.println("\t+ 1: Thao tac giao dich dat!!");
-            System.out.println("\t+ 2: Thao tac giao dich nha!!");
-            System.out.print("-Lua chon cua ban la: ");
+            quanlinhadat.Input();
+            System.out.println("--------------------------------------");
+            System.out.println("-Ban muon tim hoa don giao dich cua: ");
+            System.out.println("\t+1:Nha!!");
+            System.out.println("\t+2:Dat!!");
+            System.out.println("\t+3: Xuat ra trung binh cac giao dich dat!!");
+            System.out.print(" -Lua chon cua ban la: ");
             int choise = sc.nextInt();
             if (choise == 1) {
-                while (true) {
-                Giaodichdat giaodichdat = new Giaodichdat();
-                System.out.println("-1: Nhap thong tin cho hoa don giao dich dat!!");
-                System.out.println("-2: In ra thong tin cac hoa don giao dich dat!!");
-                System.out.println("-3: In ra hoa don can tim theo ngay thang!!");
-                System.out.print("\t-Lua chon cua ban la: ");
-                int select = sc.nextInt();
-
-                    if (select == 1) {
-                        giaodichdat.Input();
-                    } else if (select == 2) {
-                        giaodichdat.showInfo();
-                    } else if (select == 3) {
-                        System.out.print("Moi ban nhap ngay thang cua hoa don can tim (ngay/thang/nam):  ");
-                        String ngaythang = sc.nextLine();
-                        giaodichdat.Xuatgiaodich(ngaythang);
-                    }
-                }
+                System.out.print("-Nhap vao ngay thang nam cua hoa don (ngay/thang/nam): ");
+                String ngaythang = sc.next();
+                quanlinhadat.XuatGiaodich(ngaythang);
+                System.out.println("------------------------------------------");
             }
-
-                if (choise == 2) {
-                    while (true) {
-                    Giaodichnha giaodichnha = new Giaodichnha();
-                    System.out.println("-1: Nhap thong tin cho hoa don giao dich nha!!");
-                    System.out.println("-2: In ra thong tin cac hoa don giao dich nha!!");
-                    System.out.println("-3: In ra hoa don can tim theo ngay thang!!");
-                    System.out.print("\t-Lua chon cua ban la: ");
-                    int select = sc.nextInt();
-                    if (select == 1) {
-                        giaodichnha.Input();
-                    } else if (select == 2) {
-                        giaodichnha.showInfo();
-                    } else if (select == 3) {
-                        System.out.print("Moi ban nhap ngay thang cua hoa don can tim (ngay/thang/nam):  ");
-                        String ngaythang = sc.nextLine();
-                        giaodichnha.Xuatgiaodich(ngaythang);
-                    }
-                }
+            if (choise == 2) {
+                System.out.print("-Nhap vao ngay thang nam cua hoa don (ngay/thang/nam): ");
+                String ngaythang = sc.next();
+                quanlinhadat.Xuatgiaodich(ngaythang);
+                System.out.println("------------------------------------------");
+            }
+            if(choise==3){
+                System.out.println("\t\t+Trung binh cua cac giao dich dat la: "+quanlinhadat.TB());
+                System.out.println("-----------------------------------------");
             }
         }
     }
