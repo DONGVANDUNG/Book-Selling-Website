@@ -1,4 +1,4 @@
-package plusplus.spring.controller;
+package plusplus.spring.practice;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

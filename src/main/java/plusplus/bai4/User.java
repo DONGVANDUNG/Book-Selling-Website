@@ -1,4 +1,4 @@
-package plusplus.spring.controller;
+package plusplus.bai4;
 
 public class User {
     public int id;
