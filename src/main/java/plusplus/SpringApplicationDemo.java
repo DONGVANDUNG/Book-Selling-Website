@@ -1,4 +1,4 @@
-package plusplus.spring;
+package plusplus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

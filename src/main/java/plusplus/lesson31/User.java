@@ -1,4 +1,4 @@
-package plusplus.spring.lesson31;
+package plusplus.lesson31;
 
 public class User {
     public String name="Dung";

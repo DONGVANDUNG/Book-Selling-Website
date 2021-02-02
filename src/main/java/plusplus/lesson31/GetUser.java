@@ -1,8 +1,6 @@
-package plusplus.spring.lesson31;
+package plusplus.lesson31;
 
-import org.apache.catalina.realm.UserDatabaseRealm;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
