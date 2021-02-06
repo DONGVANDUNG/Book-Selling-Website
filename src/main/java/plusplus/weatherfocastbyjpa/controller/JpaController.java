@@ -87,7 +87,7 @@ public class JpaController {
     }
 
     @GetMapping(value = "/province/name/{name}")
-    public List<DetailProvinceEntity> getProvinceByProvinceName(@PathVariable(name = "name") String name) {
+    public DetailProvinceEntity getProvinceByProvinceName(@PathVariable(name = "name") String name) {
         return detailProvinceRepository.findAllByProvinceName(name);
     }
 

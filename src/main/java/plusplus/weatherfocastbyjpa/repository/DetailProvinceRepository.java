@@ -11,7 +11,7 @@ import java.util.List;
 public interface DetailProvinceRepository extends JpaRepository<DetailProvinceEntity, String> {
     List<DetailProvinceEntity> findAll();
 
-    List<DetailProvinceEntity> findAllByProvinceName(String name);
+  DetailProvinceEntity findAllByProvinceName(String name);
 
     List<DetailProvinceEntity> findALlByTemperatureMorning(Integer temp_mor);
 
