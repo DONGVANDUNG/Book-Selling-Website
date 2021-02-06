@@ -1,8 +1,8 @@
-package plusplus.MovieFavourite.Repository;
+package plusplus.moviefavouritebyjpa.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import plusplus.MovieFavourite.Entity.MovieEntity;
+import plusplus.moviefavouritebyjpa.Entity.MovieEntity;
 
 import java.util.List;
 

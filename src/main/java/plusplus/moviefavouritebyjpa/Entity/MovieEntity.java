@@ -1,4 +1,4 @@
-package plusplus.MovieFavourite.Entity;
+package plusplus.moviefavouritebyjpa.Entity;
 
 import lombok.Getter;
 import lombok.Setter;

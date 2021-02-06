@@ -1,15 +1,12 @@
-package plusplus.MovieFavourite.Controller;
+package plusplus.moviefavouritebyjpa.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import plusplus.MovieFavourite.Entity.MovieEntity;
-import plusplus.MovieFavourite.Repository.MovieRepository;
+import org.springframework.web.bind.annotation.*;
+import plusplus.moviefavouritebyjpa.Entity.MovieEntity;
+import plusplus.moviefavouritebyjpa.Entity.UserEntity;
+import plusplus.moviefavouritebyjpa.Repository.MovieRepository;
+import plusplus.moviefavouritebyjpa.Repository.UserRepository;
 
-import javax.management.MBeanOperationInfo;
-import javax.management.MalformedObjectNameException;
 import java.util.List;
 
 @RestController
@@ -17,7 +14,9 @@ import java.util.List;
 public class jpaTest {
     @Autowired
     MovieRepository movieRepository;
-
+    @Autowired
+    UserRepository userRepository;
+//     Movie Application
     @GetMapping(value = "/get/{id}")
     public MovieEntity getId(@PathVariable(name = "id") Integer id) {
         MovieEntity respond = movieRepository.findOneByMovieId(id);
@@ -70,5 +69,34 @@ public class jpaTest {
    @GetMapping(value = "get/movie/less/than/rank/{rank}")
     public List<MovieEntity> getMovieLessThanByRank(@PathVariable(name = "rank")Integer rank){
         return movieRepository.findAllByRankLessThan(rank);
+   }
+   //  User Application
+    @GetMapping(value = "/all/user")
+    public List<UserEntity> getAlluser(){
+        return userRepository.findAll();
+   }
+   @GetMapping(value = "get/user/{name}")
+    public List<UserEntity> getUserByName(@PathVariable(name = "name")String name){
+        return userRepository.findAllByUserName(name);
+   }
+   @GetMapping(value = "get/user/{gender}")
+    public List<UserEntity> getUserByGender(@PathVariable(name = "gender")String gender){
+        return userRepository.findALlByGender(gender);
+   }
+   @GetMapping(value = "get/id/{id}")
+    public UserEntity getUserById(@PathVariable(name = "id")Integer id){
+        return userRepository.findOneByUserId(id);
+   }
+   @GetMapping(value ="get/user")
+    public UserEntity getUser(@RequestBody String username,@RequestBody String password){
+        return userRepository.findOneByUserNameAndUserPassWord(username,password);
+   }
+   @GetMapping(value = "get/user/{avt}")
+    public UserEntity getUserByAvatarLink(@PathVariable(name = "avt")String avt){
+        return userRepository.findOneByAvatarLink(avt);
+   }
+   @GetMapping(value = "get/user/{birthday}")
+    public List<UserEntity> getUserByBirthDay(@PathVariable(name = "birthday")String birthday){
+        return userRepository.findAllByBirthDay(birthday);
    }
 }

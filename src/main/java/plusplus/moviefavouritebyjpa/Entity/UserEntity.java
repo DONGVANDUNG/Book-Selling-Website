@@ -1,8 +1,7 @@
-package plusplus.MovieFavourite.Entity;
+package plusplus.moviefavouritebyjpa.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.apachecommons.CommonsLog;
 
 import javax.persistence.*;
 
@@ -12,16 +11,16 @@ import javax.persistence.*;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID")
-    private int userid;
-    @Column(name = "Username")
-    private String username;
-    @Column(name = "Userpassword")
-    private String password;
-    @Column(name = "Gender")
+    @Column(name = "user_id")
+    private int userId;
+    @Column(name = "username")
+    private String userName;
+    @Column(name = "user_password")
+    private String userPassWord;
+    @Column(name = "gender")
     private String gender;
-    @Column(name = "Dateofbirth")
-    private String birthday;
-    @Column(name = "AvatarLink")
-    private String avatar;
+    @Column(name = "date_of_birth")
+    private String birthDay;
+    @Column(name = "avatar_link")
+    private String avatarLink;
 }
