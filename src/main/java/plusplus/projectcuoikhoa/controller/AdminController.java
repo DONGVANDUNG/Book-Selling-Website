@@ -127,4 +127,102 @@ public class AdminController {
     public List<User> getUserByAgeLessThan(@PathVariable(name = "age") Integer age) {
         return userRepository.findAllByAgeLessThan(age);
     }
+
+    @PostMapping(value = "/registerBook")
+    public Book registerBook(@RequestBody Book request) {
+        Book book = new Book();
+        book.setTitle(request.getTitle());
+        book.setLinkImage(request.getLinkImage());
+        book.setReleaseYear(request.getReleaseYear());
+        book.setDescribe(request.getDescribe());
+        book.setAuthor(request.getAuthor());
+        book.setCategory(request.getCategory());
+        book.setPriceBook(request.getPriceBook());
+        book.setContactInformation(request.getContactInformation());
+        book.setUserName(request.getUserName());
+        book=bookRepository.save(book);
+        return book;
+    }
+
+    @PutMapping(value = "updateBook/{id}")
+    public Book updateBookById(@PathVariable(name = "id") Integer id, @RequestBody Book request) {
+        Book book = bookRepository.findOneById(id);
+        if (bookRepository.findOneById(id) == null) {
+            return null;
+        }
+        book.setTitle(request.getTitle());
+        book.setLinkImage(request.getLinkImage());
+        book.setReleaseYear(request.getReleaseYear());
+        book.setDescribe(request.getDescribe());
+        book.setAuthor(request.getAuthor());
+        book.setCategory(request.getCategory());
+        book.setPriceBook(request.getPriceBook());
+        book.setContactInformation(request.getContactInformation());
+        book.setUserName(request.getUserName());
+        book = bookRepository.save(book);
+        return book;
+    }
+
+    @PostMapping(value = "registerUser")
+    public User registerUser(@RequestBody User request) {
+        User user = new User();
+        user.setUserName(request.getUserName());
+        user.setPhoneNumber(request.getPhoneNumber());
+        user.setEmail(request.getEmail());
+        user.setPassWord(request.getPassWord());
+        user.setGender(request.getGender());
+        user.setNationality(request.getNationality());
+        user.setAge(request.getAge());
+        user.setBirthday(request.getBirthday());
+        user = userRepository.save(user);
+        return user;
+    }
+
+    @PutMapping(value = "updateUser/{id}")
+    public String updateUser(@PathVariable(name = "id") Integer id, @RequestBody User request) {
+        User user = userRepository.findOneById(id);
+        if (userRepository.findOneById(id) == null) {
+            return "User not exist";
+        }
+        user.setUserName(request.getUserName());
+        user.setPhoneNumber(request.getPhoneNumber());
+        user.setEmail(request.getEmail());
+        user.setPassWord(request.getPassWord());
+        user.setGender(request.getGender());
+        user.setNationality(request.getNationality());
+        user.setAge(request.getAge());
+        user.setBirthday(request.getBirthday());
+        user = userRepository.save(user);
+        return "Update Success";
+    }
+
+    @PutMapping(value = "/changePass/{id}/{pass}")
+    public String changePassword(@PathVariable(name = "id") Integer id, @PathVariable(name = "pass") String pass) {
+        User user = userRepository.findOneById(id);
+        if (user == null) {
+            return "User not exist";
+        }
+
+        user.setPassWord(pass);
+        user = userRepository.save(user);
+        return "Success";
+    }
+    @DeleteMapping(value = "deleteBook/{id}")
+    public String deleteBookById(@PathVariable(name = "id")Integer id){
+        Book book=bookRepository.findOneById(id);
+        if(book==null){
+            return "Book not exist";
+        }
+        bookRepository.delete(book);
+        return "Delete success";
+    }
+    @DeleteMapping(value = "deleteUser/{id}")
+    public String deleteUserById(@PathVariable(name = "id")Integer id){
+        User user=userRepository.findOneById(id);
+        if(user==null){
+            return "User not exist";
+        }
+        userRepository.delete(user);
+        return "Delete success";
+    }
 }
